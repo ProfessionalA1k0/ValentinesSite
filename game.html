@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стріли Купідона</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0"></script>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffe6e6;
+            overflow: hidden;
+        }
+        canvas {
+            background-color: #ffcccc;
+            display: block;
+            margin: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Стріли Купідона 💘</h1>
+<p>Натисни на пробіл, щоб вистрілити стрілою! Влуч у сердечко! 🎯</p>
+<canvas id="gameCanvas"></canvas>
+
+<a href="index.html" class="back-button">⬅️ Повернутися на головну</a>
+
+<style>
+    .back-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 18px;
+        text-decoration: none;
+        color: white;
+        background-color: #ff4d4d;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+    .back-button:hover {
+        background-color: #cc0000;
+    }
+</style>
+
+<script>
+    window.onload = function() {
+        console.log("Сторінка завантажена!");
+        
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+    
+        canvas.width = 400;
+        canvas.height = 500;
+    
+        let score = 0; // Лічильник очок
+        const arrow = { x: 200, y: 450, speed: 5, width: 10, height: 30, moving: false };
+        const heart = { x: Math.random() * 350 + 25, y: 100, size: 40 };
+    
+        function drawArrow() {
+            ctx.fillStyle = "#8B0000";
+            ctx.fillRect(arrow.x, arrow.y, arrow.width, arrow.height);
+            ctx.beginPath();
+            ctx.moveTo(arrow.x, arrow.y);
+            ctx.lineTo(arrow.x - 5, arrow.y + 10);
+            ctx.lineTo(arrow.x + 5, arrow.y + 10);
+            ctx.closePath();
+            ctx.fill();
+        }
+    
+        function drawHeart() {
+            ctx.fillStyle = "red";
+            ctx.beginPath();
+            ctx.arc(heart.x - 10, heart.y, heart.size / 2, 0, Math.PI * 2);
+            ctx.arc(heart.x + 10, heart.y, heart.size / 2, 0, Math.PI * 2);
+            ctx.moveTo(heart.x - 20, heart.y);
+            ctx.lineTo(heart.x, heart.y + 30);
+            ctx.lineTo(heart.x + 20, heart.y);
+            ctx.closePath();
+            ctx.fill();
+        }
+    
+        function drawScore() {
+            ctx.fillStyle = "#333";
+            ctx.font = "20px Arial";
+            ctx.fillText("Очки: " + score, 20, 30);
+        }
+    
+        function update() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawHeart();
+            drawArrow();
+            drawScore();
+    
+            if (arrow.moving) {
+                arrow.y -= arrow.speed;
+                if (arrow.y < 0) {
+                    arrow.moving = false;
+                    arrow.y = 450;
+                }
+                if (arrow.y < heart.y + 20 && arrow.x > heart.x - 20 && arrow.x < heart.x + 20) {
+                    score++; // Збільшуємо рахунок
+                    celebrate();
+                    resetGame();
+                }
+            }
+            requestAnimationFrame(update);
+        }
+    
+        function resetGame() {
+            arrow.y = 450;
+            arrow.moving = false;
+            heart.x = Math.random() * 350 + 25;
+        }
+    
+        function celebrate() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: arrow.y / canvas.height }
+            });
+        }
+    
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowLeft" && arrow.x > 10) {
+                arrow.x -= 20; 
+            }
+            if (event.key === "ArrowRight" && arrow.x < canvas.width - 20) {
+                arrow.x += 20; 
+            }
+            if (event.key === " " && !arrow.moving) { 
+                arrow.moving = true;
+            }
+        });
+    
+        canvas.addEventListener("click", () => {
+            if (!arrow.moving) {
+                arrow.moving = true;
+            }
+        });
+    
+        update();
+    };
+    
+</script>
+
+</body>
+</html>
