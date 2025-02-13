@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Lovely Page</title>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <div class="menu-left"> <!-- Додано контейнер для центральних пунктів меню -->
+                <li class="active"><a href="#fade-out"><i class="fas fa-clock"></i> Таймер</a></li>
+                <li class="active"><a href="#love-timer"><i class="fas fa-images"></i> Галерея</a></li>
+                <li class="active"><a href="#quiz"><i class="fas fa-question-circle"></i> Тест</a></li>
+            </div>
+            <li class="logo"><img src="https://cdn-icons-png.flaticon.com/128/3487/3487717.png" alt="Image description" style="width: 30px; height: 30px;"></li>
+        </ul>
+    </nav>
+    
+    
+    <div class="cookie-banner" id="cookie-banner">
+        Will you be my Valentine? 
+        <button onclick="acceptCookies()">Звичайно!</button>
+    </div>
+    <h1>Кохана, з днем Святого Валентина!</h1>
+    <div class="message" id="fade-out">
+        <p>Ти – найпрекрасніше, що сталося в моєму житті. Я люблю тебе більше за всіх на світі! 💖</p>
+    </div>
+
+    <div class="timer" id="love-timer"></div>
+    
+    <div class="slider-container" id="fade-in">
+        <div class="slider">
+            <img src="img/1.jpg" alt="I love you">
+            <img src="img/2.jpg" alt="Unë të dua">
+            <img src="img/3.jpg" alt="Аз те обичам">
+            <img src="img/4.jpg" alt="Szeretlek">
+            <img src="img/5.jpg" alt="Te amo">
+            <img src="img/6.jpg" alt="Je t’aime">
+            <img src="img/7.jpg" alt="Я тебе кохаю">
+            <img src="img/8.jpg" alt="Seni seviyorum">
+            <img src="img/9.jpg" alt="好きです/ 好きだ">
+            <img src="img/10.jpg" alt="Milujite">
+            <img src="img/11.jpg" alt="Kocham cie">
+            <img src="img/12.jpg" alt="Ich liebe dich">
+        </div>
+        <div class="slider-container" id="fade-in">
+            <div class="slider">
+                <img src="img/13.jpg" alt="I love you">
+                <img src="img/14.jpg" alt="Unë të dua">
+                <img src="img/15.jpg" alt="Аз те обичам">
+                <img src="img/16.jpg" alt="Szeretlek">
+                <img src="img/17.jpg" alt="Te amo">
+                <img src="img/18.jpg" alt="Je t’aime">
+                <img src="img/19.jpg" alt="Я тебе кохаю">
+                <img src="img/20.jpg" alt="Seni seviyorum">
+                <img src="img/21.jpg" alt="好きです/ 好きだ">
+                <img src="img/22.jpg" alt="Milujite">
+                <img src="img/23.jpg" alt="Kocham cie">
+                <img src="img/24.jpg" alt="Ich liebe dich">
+            </div>
+        </div>
+    </div>
+    <div class="hearts-container"></div>
+
+    <div class="notification-icon" onclick="toggleNotification()">💬</div>
+
+    <div class="notification-popup" id="notificationPopup">Натисни, щоб отримати комплімент!</div>
+
+    <div class="quiz-container" id="quiz">
+        <h2>Пройди тест і отримай сюрприз! 💕</h2>
+        <form id="love-quiz">
+            <p>1. Наш улюблений спільний фільм/серіал?</p>
+            <label><input type="radio" name="q1" value="b"> 🎬 "Сумерки"</label>
+            <label><input type="radio" name="q1" value="a"> 🎬 "Щоденник пам’яті"</label>
+            <label><input type="radio" name="q1" value="c"> 🎬 "Гаррі Поттер"</label>
+    
+            <p>2. Де ми вперше зустрілися?</p>
+            <label><input type="radio" name="q2" value="c"> ✨ У кав'ярні</label>
+            <label><input type="radio" name="q2" value="b"> ✨ В парку</label>
+            <label><input type="radio" name="q2" value="a"> ✨ Біля метро)</label>
+    
+            <p>3. Який наш улюблений десерт?</p>
+            <label><input type="radio" name="q3" value="a"> 🍨 Морозиво</label>
+            <label><input type="radio" name="q3" value="c"> 🍩 Пончики</label>
+            <label><input type="radio" name="q3" value="b"> 🍓 Чізкейк</label>
+    
+            <button type="button" onclick="checkQuiz()">Перевірити</button>
+        </form>
+        
+        <div id="surprise-container" style="display: none; margin-top: 20px;">
+            <button onclick="showSurprise()">🎁 СЮРПРИЗ 🎁</button>
+        </div>
+    
+        <div id="surprise-message" style="display: none; margin-top: 20px; font-size: 1.5em; background: rgba(255, 255, 255, 0.2); padding: 20px; border-radius: 10px;">
+            Кохана, ти – найдорожча людина в моєму житті. Я вірю в тебе, в нас, в нашу любов. Ти – моя натхненниця, моя радість, моє щастя. Я дуже сильно тебе люблю і хочу, щоб у нас усе вийшло. Разом ми подолаємо будь-які труднощі, разом ми створимо найпрекраснішу історію кохання. Дякую, що ти є, моя рідна. 💖
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+

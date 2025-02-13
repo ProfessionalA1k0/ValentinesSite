@@ -1,0 +1,367 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 1);
+    padding: 15px 0;
+    z-index: 9999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-between; /* Вирівнюємо елементи на обидва кінці */
+    align-items: center; /* Вирівнюємо елементи по вертикалі */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%; /* забезпечуємо 100% ширину для вирівнювання */
+}
+
+.navbar .menu-left {
+    display: flex;
+    justify-content: center; /* Центруємо пункти меню */
+    flex-grow: 1; /* Даємо контейнеру для пунктів меню займати весь доступний простір */
+}
+
+.navbar li {
+    margin: 0 20px;
+}
+
+.navbar li.logo {
+    margin-left: auto; /* Зміщуємо логотип праворуч */
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #ff69b4;
+    background: white;
+    border-radius: 5px;
+}
+
+.navbar a:active {
+    transform: scale(0.95);
+}
+
+
+
+body {
+            background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            padding: 50px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #fade-in {
+            opacity: 0;
+            transform: translateY(20px); /* Початкове положення елемента */
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        
+        #fade-in.visible {
+            opacity: 1;
+            transform: translateY(0); /* Кінцева позиція */
+        }
+
+        #fade-out {
+            opacity: 0;
+            transform: translateY(20px); /* Початкове положення елемента */
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        
+        #fade-out.visible {
+            opacity: 1;
+            transform: translateY(0); /* Кінцева позиція */
+        }
+
+        #quiz {
+            opacity: 0;
+            transform: translateY(20px); /* Початкове положення елемента */
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        
+        #quiz.visible {
+            opacity: 1;
+            transform: translateY(0); /* Кінцева позиція */
+        }
+        
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 10px rgba(255, 20, 147, 0.7);
+            user-select: none;
+        }
+        .message {
+            font-size: 1.5em;
+            margin: 20px auto;
+            max-width: 600px;
+            background: rgba(255, 105, 180, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin-top: 30px;
+            user-select: none;
+        }
+        .slider {
+            display: flex;
+            width: calc(100vw * 12);
+            gap: 10px;
+            user-select: none;
+        }
+        .slider img {
+            width: 100vw;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            border: 5px solid white;
+            border-radius: 10px;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            user-select: none;
+        }
+        @keyframes slideRight {
+            0%, 100% { transform: translateX(0); }
+            8.33% { transform: translateX(-100vw); }
+            16.66% { transform: translateX(-200vw); }
+            25% { transform: translateX(-300vw); }
+            33.33% { transform: translateX(-400vw); }
+            41.66% { transform: translateX(-500vw); }
+            50% { transform: translateX(-600vw); }
+            58.33% { transform: translateX(-700vw); }
+            66.66% { transform: translateX(-800vw); }
+            75% { transform: translateX(-900vw); }
+            83.33% { transform: translateX(-1000vw); }
+            91.66% { transform: translateX(-1100vw); }
+        }
+        @keyframes slideLeft {
+            0%, 100% { transform: translateX(-1100vw); }
+            8.33% { transform: translateX(-1000vw); }
+            16.66% { transform: translateX(-900vw); }
+            25% { transform: translateX(-800vw); }
+            33.33% { transform: translateX(-700vw); }
+            41.66% { transform: translateX(-600vw); }
+            50% { transform: translateX(-500vw); }
+            58.33% { transform: translateX(-400vw); }
+            66.66% { transform: translateX(-300vw); }
+            75% { transform: translateX(-200vw); }
+            83.33% { transform: translateX(-100vw); }
+            91.66% { transform: translateX(0); }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shakeIcon {
+            0% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+            75% {
+                transform: translateX(-5px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        
+        .notification-icon.shake {
+            animation: shakeIcon 0.6s ease-in-out 1; /* Анімація запускається один раз */
+        }
+        
+        
+        
+        .surprise-animation {
+            animation: fadeInScale 1s ease-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+        
+        .shake-animation {
+            animation: shake 0.5s ease-in-out infinite;
+        }
+        
+        .notification-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #ff4081;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            color: black;
+            user-select: none;
+            font-size: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .notification-popup {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: white;
+            color: black;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1;
+        }
+
+        .slider:first-child {
+            animation: slideRight 150s infinite linear;
+        }
+        .slider:last-child {
+            animation: slideLeft 150s infinite linear;
+        }
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .heart-fall {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from { transform: translateY(-10vh); opacity: 1; }
+            to { transform: translateY(100vh); opacity: 0; }
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            background: rgba(34, 34, 34, 0.9); /* Темно-сірий */
+    color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 1em;
+            z-index: 100;
+            border-radius: 20px;
+        }
+        .cookie-banner button {
+            margin-left: 10px;
+            margin-left: 10px;
+            padding: 5px 10px;
+            border: none;
+            background: rgba(255, 165, 0, 0.8); /* Оранжевий */
+    color: white;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+        .cookie-banner button:hover {
+            background: white;
+    color: #FFA500; /* Оранжевий */
+        }
+
+        .timer {
+            margin-top: 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 30px auto;
+        }
+        
+        .quiz-container h2 {
+            color: white;
+            text-align: center;
+        }
+        .quiz-container p {
+            font-size: 1.2em;
+            color: white;
+            text-align: left;
+        }
+        .quiz-container label {
+            display: block;
+            font-size: 1.1em;
+            color: white;
+            text-align: left;
+        }
+        .quiz-container button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            background: rgba(255, 20, 147, 0.8);
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 20px;
+            
+        }
+        .quiz-container button:hover {
+            background: white;
+            color: #ff4081;
+        }
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 105, 180, 0.6);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 20, 147, 0.9);
+}
+
