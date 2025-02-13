@@ -360,6 +360,14 @@ body {
     transition: background 0.3s ease;
 }
 
+@media (max-width: 768px) {
+    .game-section,  /* Сховаємо гру */
+    .nav-game {       /* Сховаємо пункт меню */
+        display: none !important;
+    }
+}
+
+
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 20, 147, 0.9);
